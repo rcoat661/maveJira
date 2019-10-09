@@ -27,6 +27,8 @@ class MavenLinkController extends AbstractController
 
     public function listAllProjects()
     {
-        return new Response($this->mavenLinkApi->getAllWorkSpacesJson());
+        $workspaces = $this->mavenLinkApi->getAllWorkSpacesJson();
+
+        return new Response($workspaces);
     }
 }
