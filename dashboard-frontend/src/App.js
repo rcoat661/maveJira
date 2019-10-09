@@ -20,6 +20,7 @@ import Sidebar from "./Sidebar.js";
 const cubejsApi = cubejs(process.env.REACT_APP_CUBEJS_TOKEN, {
  apiUrl: process.env.REACT_APP_API_URL
 });
+
 const numberFormatter = item => numeral(item).format("0,0");
 const dateFormatter = item => moment(item).format("MMM YY");
 
@@ -59,34 +60,17 @@ constructor() {
               <Col sm="4">
                 <Chart
                   cubejsApi={cubejsApi}
-                  title="Total Users"
-                  query={{ measures: ["Users.count"] }}
-                  render={resultSet => renderSingleValue(resultSet, "Users.count")}
+                  title="Total Projects"
+                  query={{ measures: ["Projects.count"] }}
+                  render={resultSet => renderSingleValue(resultSet, "Projects.count")}
                 />
               </Col>
               <Col sm="4">
                 <Chart
                   cubejsApi={cubejsApi}
-                  title="Total Orders"
-                  query={{ measures: ["Orders.count"] }}
-                  render={resultSet => renderSingleValue(resultSet, "Orders.count")}
-                />
-              </Col>
-              <Col sm="4">
-                <Chart
-                  cubejsApi={cubejsApi}
-                  title="Shipped Orders"
-                  query={{
-                    measures: ["Orders.count"],
-                    filters: [
-                      {
-                        dimension: "Orders.status",
-                        operator: "equals",
-                        values: ["shipped"]
-                      }
-                    ]
-                  }}
-                  render={resultSet => renderSingleValue(resultSet, "Orders.count")}
+                  title="Active Projects"
+                   query={{ dimensions: ["Projects.name"] }}
+                   render={resultSet => renderSingleValue(resultSet, "Projects.name")}
                 />
               </Col>
             </Row>
