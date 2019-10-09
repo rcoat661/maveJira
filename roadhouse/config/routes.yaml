@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\MavenLinkController::index
+
+all_workspaces:
+    path: /all-workspaces
+    controller: App\Controller\MavenLinkController::listAllProjects

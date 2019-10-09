@@ -3,23 +3,30 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-require_once __DIR__ . '/../../vendor/mavenlink/mavenlink_php_api/lib/mavenlink_api.php';
+use App\Service\MavenLinkApi;
 
 class MavenLinkController extends AbstractController
 {
+
+    private $mavenLinkApi;
+
+    public function __construct(MavenLinkApi $mavenLinkApi)
+    {
+        $this->mavenLinkApi = $mavenLinkApi;
+    }
+
     /**
      * @Route("/maven/link", name="maven_link")
      */
     public function index()
     {
-        $mavenlinkApi = new \MavenlinkApi('811892e220f490932ec2d9b0d4fe5041200c18e1c04b5a9d9874038251915d1a');
+        return $this->render('maven_link/index.html.twig', []);
+    }
 
-        $workspaces_json = $mavenlinkApi->getWorkspaces();
-
-        return $this->render('maven_link/index.html.twig', [
-            'workspaces' => $workspaces_json,
-        ]);
+    public function listAllProjects()
+    {
+        return new Response($this->mavenLinkApi->getAllWorkSpacesJson());
     }
 }

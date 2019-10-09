@@ -1,2 +1,3 @@
 .idea
 dashboard-backend/node_modules
+.DS_Store
