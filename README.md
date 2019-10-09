@@ -12,7 +12,11 @@ Start the cube.js server
 fin init
 ```
 
-You can access the dashboard in the browser from:
+You can access the server in the browser from:
  
 http://mavejira.docksal:4000
+
+You can access the dashboard in the browser from:
+
+http://mavejira.docksal:3000
 
