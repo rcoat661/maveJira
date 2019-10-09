@@ -2,6 +2,10 @@ index:
     path: /
     controller: App\Controller\MavenLinkController::index
 
-all_workspaces:
-    path: /all-workspaces
+maven_all_workspaces:
+    path: /maven-all-workspaces
     controller: App\Controller\MavenLinkController::listAllProjects
+
+jira_all_projects:
+    path: /jira-all-projects
+    controller: App\Controller\JiraApiController::getProjects
