@@ -1,0 +1,12 @@
+# Stop any existing services.
+fin stop
+
+# Start service if it isn't running.
+fin up
+
+# Start cube.js service.
+(cd dashboard-backend && fin exec nohup npm run dev &)
+
+# Start cube.js dashboard.
+(cd dashboard-frontend && fin exec nohup npm start &)
+
